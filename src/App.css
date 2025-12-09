@@ -137,3 +137,16 @@ ul li span {
   text-decoration: line-through;
   color: red;
 }
+
+@media (max-width: 480px) {
+  .input-group {
+    flex-direction: column;
+  }
+.add-btn {
+    width: 100%;
+  }
+   .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
