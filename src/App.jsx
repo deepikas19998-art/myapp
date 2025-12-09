@@ -12,6 +12,7 @@ const [ToDoList, setToDoList] = useState([]);
     if (!ToDoList.includes(toName)) {
       const finalToDoList = [...ToDoList, toName]
       setToDoList([...ToDoList, toName]);
+      event.target.toName.value = "";
     } else {
       alert("ToDo Name Already Exists...");
     }
@@ -56,6 +57,7 @@ function ToDoListItems({value, indexNumber, ToDoList, setToDoList}){
 
   const checkStatus = () => {
   setStatus(!status)
+  
   }
   return(
     <li className={(status)? 'completeToDo': ''} onClick={checkStatus}> {indexNumber+1} {value} <span onClick={deleteRow}>&times;</span></li>
