@@ -1,136 +1,106 @@
-*{
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(191, 239, 251);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
-  height: 100vh;
-  padding-top: 40px; 
-  background-color: rgb(191, 239, 251);
-  
+  align-items: center;
+  padding: 20px 0;
 }
-
 
 
 #root {
+  width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
-form {
-  width : 1170px;
-  margin: auto;
-  display:flex;
-  gap: 10px;
 
-}
-
-form input {
-  flex-basis: 80%;
-  justify-content: flex-start;
-
-}
-
- 
-form button {
-  align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #ffffff;
-  display: flex;
-  font-size: 18px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-button:active,
-button:hover {
-  outline: 0;
-}
-
-button span {
-  background-color: rgb(5, 6, 45);
-  padding: 12px 14px;
-  border-radius: 6px;
-  width: 100%;
-  transition: 300ms;
-}
-
-button:hover span {
-  background: none;
-}
-
-button:active {
-  transform: scale(0.9);
-}
-
-.rgb-input{
-  border-radius: 2px;
-  padding: 5px;
-border-color: rgb(5, 6, 45);
-
-}
-
-h1{
+h1 {
   color: rgb(5, 6, 45);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-shadow: 2px 1px rgb(85, 19, 85);
+  margin-bottom: 20px;
 }
 
-.outerDiv{
-  width: 1085px;
+
+form,
+.input-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+form input,
+.todo-input {
+  flex: 1 1 200px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid rgb(5, 6, 45);
+}
+
+form button,
+.add-btn {
+  padding: 10px 20px;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+form button:hover,
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+form button:active,
+.add-btn:active {
+  transform: scale(0.95);
+}
+
+
+.outerDiv {
+  width: 100%;
+  max-width: 800px;
   margin: auto;
-  
-
 }
 
-.outerDiv ul{
-  margin: 10px;
-  padding: 0px;
+.outerDiv ul {
   list-style: none;
+  padding: 0;
 }
 
-.outerDiv ul li{
-  padding : 12px;
-  margin-bottom: 10px;
+.outerDiv ul li,
+.todo-item {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  color: white;
-  background-color: rgb(6, 0, 42);
-  display: flex;
+  padding: 12px 15px;
+  margin-bottom: 10px;
   font-size: 18px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  color: white;
   border-radius: 5px;
   background-image: linear-gradient(144deg, #af40ff, #3a1cff 50%, #00ddeb);
-  
-}
-ul li span {
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   cursor: pointer;
-  font-weight: bold;
-  padding: 0 8px;
+}
+
+.todo-item span.todo-text {
+  cursor: pointer;
 }
 
 .completeToDo {
@@ -138,15 +108,48 @@ ul li span {
   color: red;
 }
 
-@media (max-width: 480px) {
-  .input-group {
-    flex-direction: column;
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+
+@media (max-width: 768px) {
+  form input,
+  .todo-input,
+  form button,
+  .add-btn {
+    flex: 1 1 100%;
   }
-.add-btn {
-    width: 100%;
-  }
-   .todo-item {
+
+  .outerDiv ul li,
+  .todo-item {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px 0;
+  }
+
+  #root {
+    padding: 0.5rem;
   }
 }
