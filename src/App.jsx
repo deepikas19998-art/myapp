@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
-const STORAGE_KEY = "premium_todo_v2";
+const STORAGE_KEY = "premium_todo_v3";
 
 const uid = () =>
   `${Date.now()}-${Math.random().toString(16).slice(2)}-${Math.random()
@@ -48,8 +48,7 @@ function App() {
   const [sortBy, setSortBy] = useState("latest");
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
-  const [showCompleted, setShowCompleted] = useState(true);
-  const [darkPulse, setDarkPulse] = useState(true);
+  const [theme, setTheme] = useState("glow");
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
@@ -67,8 +66,6 @@ function App() {
 
     if (filter === "active") list = list.filter((t) => !t.completed);
     if (filter === "completed") list = list.filter((t) => t.completed);
-
-    if (!showCompleted) list = list.filter((t) => !t.completed);
 
     const q = search.trim().toLowerCase();
     if (q) {
@@ -96,7 +93,7 @@ function App() {
     });
 
     return list;
-  }, [todos, filter, search, sortBy, showCompleted]);
+  }, [todos, filter, search, sortBy]);
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -162,15 +159,8 @@ function App() {
     setTodos((prev) => prev.map((t) => ({ ...t, completed: !allDone })));
   };
 
-  const resetAll = () => {
-    setTodos(defaultTodos);
-    setFilter("all");
-    setSearch("");
-    setSortBy("latest");
-  };
-
   return (
-    <div className={`app-shell ${darkPulse ? "pulse-on" : ""}`}>
+    <div className={`app-shell ${theme}`}>
       <div className="mesh mesh-a" />
       <div className="mesh mesh-b" />
       <div className="mesh mesh-c" />
@@ -178,19 +168,20 @@ function App() {
       <main className="dashboard">
         <section className="topbar">
           <div>
-            <p className="eyebrow">Schedule your day</p>
+            <p className="eyebrow">Next-level task system</p>
             <h1>Todo Vision</h1>
             <p className="subtitle">
-              A perfect balance between powerful features and ease of use to keep you focused.
+              Fast, beautiful, and organized task management for everyday flow.
             </p>
           </div>
 
           <div className="top-actions">
-            <button type="button" className="chip-btn" onClick={() => setDarkPulse((v) => !v)}>
-              {darkPulse ? "Soft Mode" : "Glow Mode"}
-            </button>
-            <button type="button" className="chip-btn" onClick={resetAll}>
-              Reset Demo
+            <button
+              type="button"
+              className="chip-btn"
+              onClick={() => setTheme((prev) => (prev === "glow" ? "soft" : "glow"))}
+            >
+              {theme === "glow" ? "Switch to Soft Mode" : "Switch to Glow Mode"}
             </button>
           </div>
         </section>
