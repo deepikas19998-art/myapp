@@ -168,10 +168,11 @@ function App() {
       <main className="dashboard">
         <section className="topbar">
           <div>
-            <p className="eyebrow">Next-level task system</p>
+            <p className="eyebrow">Organize everything in your life</p>
             <h1>Todo Vision</h1>
             <p className="subtitle">
-              Fast, beautiful, and organized task management for everyday flow.
+              A comprehensive suite of features
+Meet your unique needs
             </p>
           </div>
 
