@@ -37,6 +37,8 @@ function App() {
     } catch {
       return defaultTodos;
     }
+
+    
   });
 
   const [text, setText] = useState("");
