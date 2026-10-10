@@ -25,6 +25,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 button,
 input,
 select {
@@ -45,7 +47,7 @@ select {
   background:
     radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.45), transparent 18%),
     radial-gradient(circle at 88% 14%, rgba(34, 197, 94, 0.32), transparent 16%),
-    radial-gradient(circle at 50% 92%, rgba(59, 130, 246, 0.28), transparent 24%),
+    radial-gradient(circle at 50% 92%, rgba(59, 130, 246, 0.28), transparent 28%),
     linear-gradient(180deg, #04060f, #090d1a);
 }
 
